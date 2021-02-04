@@ -59,13 +59,13 @@ func testHanldleCastingError(s shape) {
 
 func main() {
 	c := circle{redius: 30}
-	fmt.Println(getArea(c))
+	// fmt.Println(getArea(c))
 
 	s := squre{with: 30, heigh: 10}
-	fmt.Println(getArea(s))
+	// fmt.Println(getArea(s))
 
-	showInfo(c)
-	showInfo(s)
+	// showInfo(c)
+	// showInfo(s)
 
 	testHanldleCastingError(c)
 	testHanldleCastingError(s)
