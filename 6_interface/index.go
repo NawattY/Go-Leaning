@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"reflect"
 )
 
 type shape interface {
@@ -31,10 +32,28 @@ func (s squre) area() float64 {
 	return float64(s.heigh) * float64(s.with)
 }
 
+func showInfo(s shape) {
+	t := reflect.TypeOf(s).Name()
+
+	switch t {
+	case "circle":
+		c := s.(circle) // Casting เพราะไม่สามารถเข้าถึง property redius ของ circle ผ่าน s shape แบบ s.redius ได้
+		fmt.Println(c.redius)
+		break
+	case "squre":
+		sq := s.(squre) // Casting
+		fmt.Println(sq.with, sq.heigh)
+		break
+	}
+}
+
 func main() {
 	c := circle{redius: 30}
 	fmt.Println(getArea(c))
 
 	s := squre{with: 30, heigh: 10}
 	fmt.Println(getArea(s))
+
+	showInfo(c)
+	showInfo(s)
 }
